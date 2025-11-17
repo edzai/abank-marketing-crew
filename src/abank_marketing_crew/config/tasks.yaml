@@ -1,0 +1,435 @@
+# ===================================
+# ABank Marketing Crew - Task Configurations
+# ===================================
+
+# ===================================
+# Product Launch Campaign Workflow
+# ===================================
+
+product_launch_market_analysis:
+  description: >
+    Analyze the South African banking market to assess readiness for the new product launch.
+    Research competitor offerings, identify market gaps, analyze consumer sentiment, and 
+    evaluate economic conditions. Focus on: competitive positioning, pricing strategies, 
+    target audience receptivity, potential challenges, and market size estimation.
+    
+    Product Details: {product_name}
+    Launch Date: {launch_date}
+    Target Regions: {target_regions}
+  expected_output: >
+    A comprehensive market analysis report (2000-3000 words) including:
+    - Executive summary with key findings and recommendations
+    - Competitive landscape analysis with 5+ direct competitors
+    - Market opportunity sizing (TAM, SAM, SOM)
+    - Consumer sentiment analysis with sentiment scores
+    - SWOT analysis specific to this product
+    - Recommended positioning strategy
+    - Potential risks and mitigation strategies
+    - Market entry timing recommendations
+  agent: market_intelligence_agent
+  context: []
+
+product_launch_segmentation:
+  description: >
+    Analyze ABank's customer database to identify optimal target segments for the new product.
+    Create 5-7 distinct customer segments based on demographics, behavior, financial needs, 
+    and likelihood to adopt the product. For each segment, provide size, characteristics, 
+    value potential, and recommended messaging approach.
+    
+    Product Details: {product_name}
+    Product Features: {product_features}
+    Pricing: {pricing_strategy}
+  expected_output: >
+    Detailed segmentation report including:
+    - Overview of segmentation methodology
+    - 5-7 customer segments with detailed profiles
+    - For each segment: size (number of customers), demographics, behavioral traits, 
+      financial characteristics, product fit score, estimated conversion rate, 
+      lifetime value potential, recommended messaging themes
+    - Priority ranking of segments
+    - Recommended resource allocation across segments
+    - Personalization strategy for each segment
+  agent: customer_segmentation_agent
+  context:
+    - product_launch_market_analysis
+
+product_launch_content_strategy:
+  description: >
+    Develop a comprehensive, multi-channel content strategy and creative campaign for 
+    the product launch. Create campaign themes, key messages, content pillars, and 
+    channel-specific tactics. Ensure cultural relevance for diverse South African audiences 
+    and alignment with ABank brand guidelines.
+    
+    Target Segments: {identified_segments}
+    Campaign Budget: {campaign_budget}
+    Duration: {campaign_duration}
+  expected_output: >
+    Complete content strategy document including:
+    - Campaign theme and creative concept
+    - Master messaging framework (value proposition, key benefits, proof points)
+    - Segment-specific messaging variations
+    - Multi-channel content plan (email, SMS, social, digital display, branch, ATM)
+    - Content calendar with production timeline
+    - Creative brief for each content type
+    - Sample copy for 3-5 key touchpoints
+    - Visual direction and mood boards
+    - Multilingual content requirements (English, Afrikaans, Zulu, Xhosa)
+    - Influencer/partnership recommendations
+    - Success metrics and KPIs for content performance
+  agent: content_strategy_agent
+  context:
+    - product_launch_market_analysis
+    - product_launch_segmentation
+
+product_launch_compliance_review:
+  description: >
+    Conduct thorough compliance review of the proposed product launch campaign. Ensure 
+    all content, claims, and marketing tactics comply with South African banking regulations 
+    including TCF, POPIA, FAIS Act, and NCA. Identify any potential risks and provide 
+    recommendations for compliant alternatives.
+    
+    Campaign Materials: {campaign_materials}
+    Product Terms: {product_terms}
+  expected_output: >
+    Compliance review report including:
+    - Overall compliance score (0-100)
+    - Detailed review of each campaign element
+    - List of compliance issues identified (if any) with severity ratings
+    - Required changes to achieve full compliance
+    - Recommendations for compliant messaging alternatives
+    - Disclosure requirements and suggested placement
+    - Risk assessment (low/medium/high) for each channel
+    - Required legal disclaimers and T&Cs visibility
+    - Approval status (approved / approved with changes / rejected)
+    - Sign-off requirements and approval workflow
+    - Ongoing monitoring requirements
+  agent: compliance_risk_agent
+  context:
+    - product_launch_content_strategy
+
+product_launch_execution_plan:
+  description: >
+    Create detailed campaign execution plan including asset production, channel setup, 
+    deployment schedules, A/B test designs, and quality assurance protocols. Ensure 
+    technical feasibility across all channels and plan for contingencies.
+    
+    Approved Content: {approved_content}
+    Launch Date: {launch_date}
+    Budget: {execution_budget}
+  expected_output: >
+    Campaign execution plan including:
+    - Project timeline with milestones and dependencies
+    - Asset production checklist (email templates, SMS copy, social posts, display ads)
+    - Technical setup requirements for each channel
+    - Deployment schedule (date/time for each campaign element)
+    - A/B test design (variants, sample sizes, success metrics, duration)
+    - Quality assurance checklist
+    - Rollout strategy (pilot vs. full launch, regional phasing)
+    - Integration requirements (CRM, marketing automation, analytics)
+    - Contingency plans for technical failures or load shedding
+    - Team responsibilities and contact list
+    - Budget allocation by channel
+    - Pre-launch checklist
+  agent: campaign_execution_agent
+  context:
+    - product_launch_content_strategy
+    - product_launch_compliance_review
+
+product_launch_performance_monitoring:
+  description: >
+    Set up comprehensive performance monitoring for the product launch campaign. Define 
+    KPIs, create dashboards, establish baseline benchmarks, and configure real-time 
+    alerts. Plan for optimization cycles throughout the campaign.
+    
+    Campaign Details: {campaign_details}
+    Success Criteria: {success_criteria}
+  expected_output: >
+    Performance monitoring framework including:
+    - Comprehensive KPI framework (awareness, consideration, conversion, retention metrics)
+    - Real-time dashboard design and implementation plan
+    - Baseline benchmarks for each KPI
+    - Target goals by week and overall campaign
+    - Alert thresholds for underperformance or overspend
+    - Daily, weekly, and post-campaign reporting schedule
+    - Attribution model for multi-touch journey
+    - ROI calculation methodology
+    - Optimization triggers (when to adjust budget, messaging, targeting)
+    - A/B test result analysis plan
+    - Competitive benchmarking approach
+    - Learning agenda (questions to answer during campaign)
+    - Post-campaign analysis framework
+  agent: performance_analytics_agent
+  context:
+    - product_launch_execution_plan
+
+# ===================================
+# Real-Time Response Workflow
+# ===================================
+
+real_time_market_monitoring:
+  description: >
+    Continuously monitor the South African banking market for significant events, 
+    competitor actions, regulatory changes, or consumer sentiment shifts that require 
+    immediate marketing response. Flag opportunities and threats in real-time.
+    
+    Monitoring Focus: {monitoring_priorities}
+    Alert Thresholds: {alert_criteria}
+  expected_output: >
+    Real-time market intelligence alerts including:
+    - Description of detected event/change
+    - Significance score (0-100)
+    - Category (competitor action, regulatory change, economic event, social trend, crisis)
+    - Potential impact on ABank (positive/negative/neutral)
+    - Recommended response urgency (immediate, within 24h, monitor)
+    - Suggested marketing response options
+    - Relevant customer segments affected
+    - Supporting data and sources
+    - Competitive intelligence (what others are doing)
+  agent: market_intelligence_agent
+  context: []
+
+real_time_response_strategy:
+  description: >
+    Develop rapid response marketing strategy for the detected market event. Create 
+    messaging, identify opportunities to capitalize on or risks to mitigate, and 
+    propose tactical campaign approach.
+    
+    Market Event: {detected_event}
+    Urgency Level: {urgency_level}
+  expected_output: >
+    Rapid response strategy including:
+    - Situation analysis and strategic recommendation
+    - Response positioning (how ABank should respond)
+    - Key messages and talking points
+    - Proposed campaign tactics (channels, targeting, timing)
+    - Content themes and creative direction
+    - Estimated budget requirement
+    - Risk assessment of proposed response
+    - Competitive advantage analysis
+    - Timeline for execution
+    - Success metrics
+  agent: content_strategy_agent
+  context:
+    - real_time_market_monitoring
+
+real_time_compliance_check:
+  description: >
+    Conduct expedited compliance review of proposed rapid response campaign. Balance 
+    need for speed with regulatory requirements. Flag any high-risk elements.
+    
+    Response Strategy: {response_strategy}
+    Time Constraint: {response_deadline}
+  expected_output: >
+    Expedited compliance assessment including:
+    - Fast-track compliance score
+    - Critical compliance issues (must-fix)
+    - Medium-priority issues (should-fix)
+    - Low-priority issues (nice-to-fix)
+    - Pre-approved messaging alternatives
+    - Required disclaimers
+    - Approval recommendation (go / revise / escalate)
+    - Risk level (low/medium/high)
+    - Expedited review justification
+  agent: compliance_risk_agent
+  context:
+    - real_time_response_strategy
+  priority: high
+
+real_time_campaign_deployment:
+  description: >
+    Execute approved rapid response campaign with maximum speed. Deploy across relevant 
+    channels, activate targeting, and ensure quality despite compressed timeline.
+    
+    Approved Strategy: {approved_strategy}
+    Deployment Deadline: {deadline}
+  expected_output: >
+    Campaign deployment confirmation including:
+    - Deployment status by channel
+    - Actual launch time for each element
+    - Reach and frequency estimates
+    - Quality assurance results
+    - Technical setup confirmation
+    - Monitoring dashboard URL
+    - Initial performance snapshot (first hour)
+    - Any deployment issues and resolutions
+    - Contact escalation path
+  agent: campaign_execution_agent
+  context:
+    - real_time_compliance_check
+  priority: high
+
+real_time_impact_measurement:
+  description: >
+    Measure immediate impact of rapid response campaign. Track real-time performance, 
+    sentiment shifts, and competitive reactions. Provide hourly updates during critical 
+    first 24 hours.
+    
+    Campaign Details: {campaign_details}
+    Measurement Period: {measurement_period}
+  expected_output: >
+    Real-time impact report including:
+    - Campaign performance metrics (impressions, engagement, conversions)
+    - Sentiment analysis (before vs. after)
+    - Website traffic impact
+    - Social media response and share-of-voice
+    - Customer inquiry volume changes
+    - Competitive reactions observed
+    - Media coverage generated
+    - ROI estimate (preliminary)
+    - Performance vs. benchmarks
+    - Optimization recommendations
+    - Continue/pause/stop recommendation
+  agent: performance_analytics_agent
+  context:
+    - real_time_campaign_deployment
+
+# ===================================
+# Personalized Customer Journey Workflow
+# ===================================
+
+journey_micro_segmentation:
+  description: >
+    Perform daily micro-segmentation analysis to identify customers at specific journey 
+    stages or with specific needs. Create hyper-targeted segments for personalized 
+    outreach.
+    
+    Segmentation Date: {analysis_date}
+    Focus Areas: {focus_segments}
+  expected_output: >
+    Daily micro-segmentation report including:
+    - Number of new micro-segments identified
+    - For each micro-segment: size, defining characteristics, journey stage, 
+      immediate needs, recommended next action, personalization opportunities
+    - High-value individuals flagged for 1:1 attention
+    - Churn risk segments identified
+    - Cross-sell/upsell opportunities
+    - Dormant customer reactivation opportunities
+    - Life event triggers detected (new job, marriage, child, home purchase)
+    - Behavioral anomalies requiring attention
+  agent: customer_segmentation_agent
+  context: []
+
+journey_personalized_content:
+  description: >
+    Generate personalized message variations for identified micro-segments. Create 
+    individualized content that speaks to specific customer contexts, needs, and 
+    preferences.
+    
+    Micro-Segments: {identified_microsegments}
+    Personalization Level: {personalization_depth}
+  expected_output: >
+    Personalized content package including:
+    - Message templates for each micro-segment
+    - Dynamic content variables and logic
+    - Personalization tokens (name, product, balance, etc.)
+    - Contextual references (recent transactions, life events)
+    - Channel-specific variations (email, SMS, app notification, WhatsApp)
+    - Tone and style adjustments per segment
+    - Recommended send times per customer
+    - Offer personalization (product, pricing, features)
+    - Next-best-action recommendations
+    - Content testing plan for top segments
+  agent: content_strategy_agent
+  context:
+    - journey_micro_segmentation
+
+journey_automated_deployment:
+  description: >
+    Deploy personalized communications via marketing automation. Execute triggered 
+    campaigns based on customer behavior, lifecycle stage, and real-time signals.
+    
+    Personalized Content: {content_library}
+    Automation Rules: {trigger_rules}
+  expected_output: >
+    Automation deployment report including:
+    - Number of automated journeys activated
+    - Trigger conditions and logic for each journey
+    - Content deployed (which customers received which messages)
+    - Delivery confirmation by channel
+    - Suppression rules applied (frequency capping, opt-outs)
+    - Timing optimization results
+    - Personalization accuracy verification
+    - Technical issues (bounces, delivery failures)
+    - Automation performance metrics (open rate, click rate, conversion rate)
+    - A/B test results for personalization elements
+  agent: campaign_execution_agent
+  context:
+    - journey_personalized_content
+
+journey_engagement_analysis:
+  description: >
+    Analyze individual customer engagement with personalized communications. Track 
+    response patterns, refine personalization algorithms, and feed insights back into 
+    segmentation model.
+    
+    Deployment Data: {deployment_results}
+    Analysis Period: {period}
+  expected_output: >
+    Engagement analysis report including:
+    - Overall personalization performance vs. control group
+    - Engagement metrics by micro-segment
+    - Individual customer response analysis (engaged, not engaged, converted)
+    - Content effectiveness by variation
+    - Channel preference insights
+    - Timing optimization learnings
+    - Personalization element performance (which variables drive engagement)
+    - Refinement recommendations for segmentation model
+    - Customer journey progression tracking
+    - LTV impact of personalization
+    - Next cycle improvements
+    - Success stories and case examples
+  agent: performance_analytics_agent
+  context:
+    - journey_automated_deployment
+
+# ===================================
+# Campaign Optimization Workflow
+# ===================================
+
+continuous_performance_monitoring:
+  description: >
+    Monitor all active campaigns for performance anomalies, optimization opportunities, 
+    and budget efficiency. Generate daily optimization recommendations.
+    
+    Active Campaigns: {campaign_list}
+    Optimization Goals: {optimization_priorities}
+  expected_output: >
+    Daily optimization report including:
+    - Campaign performance summary (all active campaigns)
+    - Underperforming elements flagged with root cause analysis
+    - Overperforming elements to scale
+    - Budget reallocation recommendations
+    - Creative refresh recommendations
+    - Targeting adjustments proposed
+    - Channel mix optimization suggestions
+    - A/B test winners and losers
+    - Anomalies detected (spikes, drops, unusual patterns)
+    - Competitive activity impacts
+    - Weather/event impacts (load shedding, holidays, etc.)
+    - Immediate action items with expected impact
+  agent: performance_analytics_agent
+  context: []
+
+optimization_execution:
+  description: >
+    Execute approved optimizations across active campaigns. Make real-time adjustments 
+    to budgets, targeting, creative, and bidding strategies.
+    
+    Optimization Plan: {approved_optimizations}
+    Authorization Level: {approval_tier}
+  expected_output: >
+    Optimization execution report including:
+    - Changes implemented (detailed list)
+    - Execution timestamp for each change
+    - Expected impact of each optimization
+    - Before/after comparison snapshots
+    - A/B tests launched
+    - Budget reallocations completed
+    - Creative variants deployed
+    - Targeting adjustments made
+    - Technical confirmations
+    - Rollback plan if needed
+    - Early results (first 4 hours)
+  agent: campaign_execution_agent
+  context:
+    - continuous_performance_monitoring

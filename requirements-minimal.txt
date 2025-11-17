@@ -1,0 +1,22 @@
+# Minimal Requirements for ABank Marketing Crew
+# Use this if you want a lighter installation
+
+# Core Framework (Required)
+crewai>=1.4.0
+crewai-tools>=1.4.0
+
+# LLM Provider (Choose ONE)
+openai>=1.50.0
+# OR
+# anthropic>=0.39.0
+
+# Essential Dependencies
+python-dotenv>=1.0.0
+pydantic>=2.9.0
+pyyaml>=6.0.0
+rich>=13.9.0
+requests>=2.32.0
+
+# Basic utilities
+loguru>=0.7.0
+click>=8.1.0
